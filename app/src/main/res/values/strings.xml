@@ -12,6 +12,7 @@
     <string name="default_scale_factor" translatable="false">3</string>
     <string name="default_message">Test message</string>
 
+    <string name="all_remotes">All Remotes</string>
     <string name="remote_send_message">Send Message</string>
     <string name="remote_touchpad">Touchpad</string>
 

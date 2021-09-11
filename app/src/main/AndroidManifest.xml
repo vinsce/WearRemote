@@ -44,6 +44,9 @@
             android:name=".TouchpadActivity"
             android:label="@string/app_name"
             android:theme="@style/TouchpadStyle" />
+        <activity
+            android:name=".RemotesActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
         adjustInset();
         loadConfiguration();
 
-        binding.btnRemoteSendMessage.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SendMessageActivity.class)));
+        binding.btnRemotes.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RemotesActivity.class)));
         binding.btnRemoteTouchpad.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TouchpadActivity.class)));
     }
 
