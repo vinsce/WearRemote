@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">WearRemote</string>
+
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+
+    <string name="default_server_address" translatable="false">10.0.2.2</string>
+    <string name="default_server_port" translatable="false">50051</string>
+    <string name="default_message">Test message</string>
+
+    <string name="action_send">Send</string>
+    <string name="server_address">Server address</string>
+    <string name="server_port">Server port</string>
+    <string name="message">Message</string>
+</resources>

@@ -1,0 +1,79 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.17'
+    }
+}
+
+plugins {
+    id 'com.android.application'
+    id "com.google.protobuf" version "0.8.17"
+}
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        applicationId "me.vinsce.android.wear.remote"
+        minSdk 28
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    // Grpc
+    implementation 'io.grpc:grpc-okhttp:1.40.1'
+    implementation 'io.grpc:grpc-protobuf-lite:1.40.1'
+    implementation 'io.grpc:grpc-stub:1.40.1'
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    implementation 'com.google.android.gms:play-services-wearable:17.1.0'
+    implementation 'androidx.percentlayout:percentlayout:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.wear:wear:1.1.0'
+
+    implementation "androidx.lifecycle:lifecycle-livedata:2.3.1"
+
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.17.3"
+    }
+    plugins {
+
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.40.1'
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java { option 'lite' }
+            }
+            task.plugins {
+                grpc { option 'lite' }
+            }
+        }
+    }
+}
