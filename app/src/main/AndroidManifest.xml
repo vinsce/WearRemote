@@ -39,6 +39,11 @@
         <activity
             android:name=".SendMessageActivity"
             android:label="@string/app_name" />
+
+        <activity
+            android:name=".TouchpadActivity"
+            android:label="@string/app_name"
+            android:theme="@style/TouchpadStyle" />
     </application>
 
 </manifest>

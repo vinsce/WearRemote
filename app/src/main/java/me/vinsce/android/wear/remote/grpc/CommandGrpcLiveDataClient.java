@@ -28,4 +28,37 @@ public class CommandGrpcLiveDataClient extends GrpcLiveDataClient {
 
         return responseLiveData;
     }
+
+    public LiveData<GrpcResponse<CommandProto.GenericCommandResponse>> moveMouse(float deltaX, float deltaY) {
+        CommandServiceGrpc.CommandServiceFutureStub stub = CommandServiceGrpc.newFutureStub(channel);
+
+        MutableLiveData<GrpcResponse<CommandProto.GenericCommandResponse>> responseLiveData = new MutableLiveData<>();
+
+        CommandProto.MouseMoveCommand request = CommandProto.MouseMoveCommand.newBuilder().setDeltaX(deltaX).setDeltaY(deltaY).build();
+        handleLiveData(responseLiveData, stub.moveMouse(request));
+
+        return responseLiveData;
+    }
+
+    public LiveData<GrpcResponse<CommandProto.GenericCommandResponse>> clickMouse(boolean single) {
+        CommandServiceGrpc.CommandServiceFutureStub stub = CommandServiceGrpc.newFutureStub(channel);
+
+        MutableLiveData<GrpcResponse<CommandProto.GenericCommandResponse>> responseLiveData = new MutableLiveData<>();
+
+        CommandProto.MouseClickCommand request = CommandProto.MouseClickCommand.newBuilder().setSingleTap(single).build();
+        handleLiveData(responseLiveData, stub.clickMouse(request));
+
+        return responseLiveData;
+    }
+
+    public LiveData<GrpcResponse<CommandProto.GenericCommandResponse>> mouseEvent(CommandProto.MouseEventCommand.EventType eventType) {
+        CommandServiceGrpc.CommandServiceFutureStub stub = CommandServiceGrpc.newFutureStub(channel);
+
+        MutableLiveData<GrpcResponse<CommandProto.GenericCommandResponse>> responseLiveData = new MutableLiveData<>();
+
+        CommandProto.MouseEventCommand request = CommandProto.MouseEventCommand.newBuilder().setEventType(eventType).build();
+        handleLiveData(responseLiveData, stub.mouseEvent(request));
+
+        return responseLiveData;
+    }
 }

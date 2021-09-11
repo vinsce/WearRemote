@@ -38,7 +38,7 @@ public class GrpcLiveDataClient {
             if (responseFuture.isDone()) {
                 try {
                     T response = responseFuture.get();
-                    Log.d(LOG_TAG, "Received response: " + response);
+                    Log.v(LOG_TAG, "Received response: " + response);
                     responseLiveData.postValue(GrpcResponse.success(response));
                 } catch (Exception e) {
                     Log.e(LOG_TAG, "Error getting response from grpc future", e);

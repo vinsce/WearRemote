@@ -23,7 +23,8 @@ public class MainActivity extends Activity {
         adjustInset();
         loadConfiguration();
 
-        binding.btnConnect.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SendMessageActivity.class)));
+        binding.btnRemoteSendMessage.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SendMessageActivity.class)));
+        binding.btnRemoteTouchpad.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TouchpadActivity.class)));
     }
 
     private static final double FACTOR = 0.146467f;

@@ -31,11 +31,18 @@
             android:text="@string/default_server_port" />
 
         <Button
-            android:id="@+id/btnConnect"
+            android:id="@+id/btnRemoteSendMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/action_send" />
+            android:text="@string/remote_send_message" />
+
+        <Button
+            android:id="@+id/btnRemoteTouchpad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/remote_touchpad" />
 
     </LinearLayout>
 </ScrollView>
