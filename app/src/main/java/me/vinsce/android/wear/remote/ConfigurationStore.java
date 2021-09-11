@@ -15,12 +15,9 @@ public class ConfigurationStore {
 
     public void setServerAddress(String serverAddress) {
         context.getSharedPreferences(Keys._CONFIGURATION, Context.MODE_PRIVATE)
-                .edit().putString(Keys.SERVER_ADDRESS, serverAddress).apply();
-    }
-
-    public void setServerPort(int port) {
-        context.getSharedPreferences(Keys._CONFIGURATION, Context.MODE_PRIVATE)
-                .edit().putInt(Keys.SERVER_PORT, port).apply();
+                .edit()
+                .putString(Keys.SERVER_ADDRESS, serverAddress)
+                .apply();
     }
 
     public int getServerPort() {
@@ -28,10 +25,32 @@ public class ConfigurationStore {
                 .getInt(Keys.SERVER_PORT, Integer.parseInt(context.getString(R.string.default_server_port)));
     }
 
+    public void setServerPort(int port) {
+        context.getSharedPreferences(Keys._CONFIGURATION, Context.MODE_PRIVATE)
+                .edit()
+                .putInt(Keys.SERVER_PORT, port)
+                .apply();
+    }
+
+    public float getScaleFactor() {
+        return context.getSharedPreferences(Keys._CONFIGURATION, Context.MODE_PRIVATE)
+                .getFloat(Keys.TOUCHPAD_SCALE_FACTOR, Float.parseFloat(context.getString(R.string.default_scale_factor)));
+    }
+
+    public void setScaleFactor(float scaleFactor) {
+        context.getSharedPreferences(Keys._CONFIGURATION, Context.MODE_PRIVATE)
+                .edit()
+                .putFloat(Keys.TOUCHPAD_SCALE_FACTOR, scaleFactor)
+                .apply();
+    }
+
     private interface Keys {
         String _CONFIGURATION = "configuration";
+
         String SERVER_ADDRESS = "server.address";
         String SERVER_PORT = "server.port";
+
+        String TOUCHPAD_SCALE_FACTOR = "touchpad.scale_factor";
     }
 
 }

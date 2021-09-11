@@ -9,10 +9,18 @@
 
     <string name="default_server_address" translatable="false">10.0.2.2</string>
     <string name="default_server_port" translatable="false">50051</string>
+    <string name="default_scale_factor" translatable="false">3</string>
     <string name="default_message">Test message</string>
 
+    <string name="all_remotes">All Remotes</string>
+    <string name="remote_send_message">Send Message</string>
+    <string name="remote_touchpad">Touchpad</string>
+
     <string name="action_send">Send</string>
+    <string name="action_close">Close</string>
+
     <string name="server_address">Server address</string>
     <string name="server_port">Server port</string>
+
     <string name="message">Message</string>
 </resources>
