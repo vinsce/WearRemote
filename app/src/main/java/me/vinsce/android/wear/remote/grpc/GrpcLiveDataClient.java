@@ -52,7 +52,9 @@ public class GrpcLiveDataClient {
         }, executor);
     }
 
-    protected void closeChannel() {
+    public void closeChannel() {
+        if (channel.isShutdown())
+            return;
         try {
             channel.shutdown().awaitTermination(1, TimeUnit.SECONDS);
         } catch (InterruptedException e) {

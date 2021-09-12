@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".SendMessageActivity"
+    tools:deviceIds="wear">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/inner_frame_layout_padding"
+        app:layout_boxedEdges="all">
+
+        <ImageButton
+            android:id="@+id/btnShutdown"
+            android:layout_width="@dimen/remote_power_action_icon_size"
+            android:layout_height="@dimen/remote_power_action_icon_size"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/action_power_shutdown"
+            android:src="@drawable/ic_power_shutdown"
+            android:tint="?android:attr/colorBackground"
+            app:layout_constraintBottom_toTopOf="@+id/btnSleep"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnRestart"
+            android:layout_width="@dimen/remote_power_action_icon_size"
+            android:layout_height="@dimen/remote_power_action_icon_size"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/action_power_reboot"
+            android:src="@drawable/ic_power_restart"
+            android:tint="?android:attr/colorBackground"
+            app:layout_constraintBottom_toTopOf="@+id/btnSleep"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnSleep"
+            android:layout_width="@dimen/remote_power_action_icon_size"
+            android:layout_height="@dimen/remote_power_action_icon_size"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/action_power_sleep"
+            android:src="@drawable/ic_power_sleep"
+            android:tint="?android:attr/colorBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRestart" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.wear.widget.BoxInsetLayout>

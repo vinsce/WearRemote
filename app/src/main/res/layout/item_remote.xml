@@ -28,5 +28,4 @@
         android:layout_marginStart="@dimen/list_icon_text_margin"
         tools:text="Remote title" />
 
-
 </LinearLayout>

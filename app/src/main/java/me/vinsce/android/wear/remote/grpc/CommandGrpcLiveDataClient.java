@@ -61,4 +61,15 @@ public class CommandGrpcLiveDataClient extends GrpcLiveDataClient {
 
         return responseLiveData;
     }
+
+    public LiveData<GrpcResponse<CommandProto.GenericCommandResponse>> powerAction(CommandProto.PowerCommand.PowerAction powerAction) {
+        CommandServiceGrpc.CommandServiceFutureStub stub = CommandServiceGrpc.newFutureStub(channel);
+
+        MutableLiveData<GrpcResponse<CommandProto.GenericCommandResponse>> responseLiveData = new MutableLiveData<>();
+
+        CommandProto.PowerCommand request = CommandProto.PowerCommand.newBuilder().setAction(powerAction).build();
+        handleLiveData(responseLiveData, stub.runPowerCommand(request));
+
+        return responseLiveData;
+    }
 }

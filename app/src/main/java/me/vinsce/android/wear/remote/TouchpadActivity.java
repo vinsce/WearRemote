@@ -20,7 +20,7 @@ public class TouchpadActivity extends Activity implements GestureDetector.OnGest
     private GestureDetectorCompat gestureDetector;
     private float scaleFactor;
 
-    me.vinsce.android.wear.remote.databinding.ActivityTouchpadBinding binding;
+    ActivityTouchpadBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,5 +137,11 @@ public class TouchpadActivity extends Activity implements GestureDetector.OnGest
     @Override
     public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
         return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        commandGrpcLiveDataClient.closeChannel();
+        super.onDestroy();
     }
 }

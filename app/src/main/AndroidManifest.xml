@@ -47,6 +47,9 @@
         <activity
             android:name=".RemotesActivity"
             android:label="@string/app_name" />
+        <activity
+            android:name=".PowerActionsActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>
