@@ -25,10 +25,11 @@ public class ConfigurationStore {
                 .getInt(Keys.SERVER_PORT, Integer.parseInt(context.getString(R.string.default_server_port)));
     }
 
-    public void setServerPort(int port) {
+    public void setServerPort(Integer port) {
+        final int cleanPort = port != null ? port : (Integer.parseInt(context.getString(R.string.default_server_port)));
         context.getSharedPreferences(Keys._CONFIGURATION, Context.MODE_PRIVATE)
                 .edit()
-                .putInt(Keys.SERVER_PORT, port)
+                .putInt(Keys.SERVER_PORT, cleanPort)
                 .apply();
     }
 

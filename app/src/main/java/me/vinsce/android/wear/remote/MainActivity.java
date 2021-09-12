@@ -46,6 +46,11 @@ public class MainActivity extends Activity {
 
         // Add listeners to EditTexts to update configuration
         binding.inServerAddress.addTextChangedListener((AfterTextChangedListener) editable -> configurationStore.setServerAddress(editable.toString()));
-        binding.inServerPort.addTextChangedListener((AfterTextChangedListener) editable -> configurationStore.setServerPort(Integer.parseInt(editable.toString())));
+        binding.inServerPort.addTextChangedListener((AfterTextChangedListener) editable -> {
+            Integer port = null;
+            if (editable.toString().length() > 0)
+                port = Integer.parseInt(editable.toString());
+            configurationStore.setServerPort(port);
+        });
     }
 }
