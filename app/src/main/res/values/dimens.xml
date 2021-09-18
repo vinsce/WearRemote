@@ -18,4 +18,7 @@
     <dimen name="list_icon_padding">7dp</dimen>
 
     <dimen name="remote_power_action_icon_size">48dp</dimen>
+
+    <dimen name="remote_media_action_icon_size">40dp</dimen>
+    <dimen name="remote_media_action_icon_margin">4dp</dimen>
 </resources>

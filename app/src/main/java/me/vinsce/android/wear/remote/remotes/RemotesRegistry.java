@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
+import me.vinsce.android.wear.remote.MediaControlActivity;
 import me.vinsce.android.wear.remote.PowerActionsActivity;
 import me.vinsce.android.wear.remote.R;
 import me.vinsce.android.wear.remote.SendMessageActivity;
@@ -16,6 +17,7 @@ public class RemotesRegistry {
     private RemotesRegistry() {
         remotes.add(new RemoteDefinition(R.string.remote_touchpad, R.drawable.ic_remote_touchpad_24, TouchpadActivity.class));
         remotes.add(new RemoteDefinition(R.string.remote_power, R.drawable.ic_remote_power_24, PowerActionsActivity.class));
+        remotes.add(new RemoteDefinition(R.string.remote_media, R.drawable.ic_media_play, MediaControlActivity.class));
         remotes.add(new RemoteDefinition(R.string.remote_send_message, R.drawable.ic_remote_send_message_24, SendMessageActivity.class));
     }
 

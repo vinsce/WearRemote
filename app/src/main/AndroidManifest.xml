@@ -50,6 +50,9 @@
         <activity
             android:name=".PowerActionsActivity"
             android:label="@string/app_name" />
+        <activity
+            android:name=".MediaControlActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>
