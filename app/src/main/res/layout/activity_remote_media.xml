@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".MediaControlActivity"
+    tools:deviceIds="wear">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/inner_frame_layout_padding"
+        app:layout_boxedEdges="all">
+
+        <ImageButton
+            android:id="@+id/btnVolumeDown"
+            android:layout_width="@dimen/remote_media_action_icon_size"
+            android:layout_height="@dimen/remote_media_action_icon_size"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/action_media_volume_down"
+            android:src="@drawable/ic_media_volume_down"
+            android:tint="?android:attr/colorBackground"
+            app:layout_constraintEnd_toStartOf="@+id/btnVolumeMute"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnVolumeMute"
+            android:layout_width="@dimen/remote_media_action_icon_size"
+            android:layout_height="@dimen/remote_media_action_icon_size"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/action_media_volume_mute"
+            android:src="@drawable/ic_media_volume_mute"
+            android:tint="?android:attr/colorBackground"
+            app:layout_constraintEnd_toStartOf="@+id/btnVolumeUp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnVolumeDown"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnVolumeUp"
+            android:layout_width="@dimen/remote_media_action_icon_size"
+            android:layout_height="@dimen/remote_media_action_icon_size"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/action_media_volume_up"
+            android:src="@drawable/ic_media_volume_up"
+            android:tint="?android:attr/colorBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnVolumeMute"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageButton
+            android:id="@+id/btnMediaPrevious"
+            android:layout_width="@dimen/remote_media_action_icon_size"
+            android:layout_height="@dimen/remote_media_action_icon_size"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/action_media_previous"
+            android:src="@drawable/ic_media_previous"
+            android:tint="?android:attr/colorBackground"
+
+            app:layout_constraintBottom_toBottomOf="@+id/btnMediaStop"
+            app:layout_constraintEnd_toStartOf="@+id/btnMediaPlay"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnMediaPlay" />
+
+
+        <ImageButton
+            android:id="@+id/btnMediaPlay"
+            android:layout_width="@dimen/remote_media_action_icon_size"
+            android:layout_height="@dimen/remote_media_action_icon_size"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/action_media_play_pause"
+            android:src="@drawable/ic_media_play"
+            android:tint="?android:attr/colorBackground"
+            app:layout_constraintBottom_toTopOf="@+id/btnMediaStop"
+            app:layout_constraintEnd_toStartOf="@+id/btnMediaNext"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnMediaPrevious"
+            app:layout_constraintTop_toBottomOf="@+id/btnVolumeMute" />
+
+        <ImageButton
+            android:id="@+id/btnMediaNext"
+            android:layout_width="@dimen/remote_media_action_icon_size"
+            android:layout_height="@dimen/remote_media_action_icon_size"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/action_media_next"
+            android:src="@drawable/ic_media_next"
+            android:tint="?android:attr/colorBackground"
+            app:layout_constraintBottom_toBottomOf="@+id/btnMediaStop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnMediaPlay"
+            app:layout_constraintTop_toTopOf="@+id/btnMediaPlay" />
+
+        <ImageButton
+            android:id="@+id/btnMediaStop"
+            android:layout_width="@dimen/remote_media_action_icon_size"
+            android:layout_height="@dimen/remote_media_action_icon_size"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/action_media_stop"
+            android:src="@drawable/ic_media_stop"
+            android:tint="?android:attr/colorBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnMediaPlay"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/btnMediaPlay"
+            app:layout_constraintTop_toBottomOf="@+id/btnMediaPlay" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.wear.widget.BoxInsetLayout>

@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import me.vinsce.android.wear.remote.databinding.ActivityRemotePowerBinding;
-import me.vinsce.android.wear.remote.grpc.CommandGrpcLiveDataClient;
-import me.vinsce.remote.server.proto.CommandProto;
+import me.vinsce.android.wear.remote.grpc.PowerGrpcLiveDataClient;
+import me.vinsce.remote.server.proto.PowerProto;
 
 public class PowerActionsActivity extends Activity {
     private static final String LOG_TAG = PowerActionsActivity.class.getSimpleName();
@@ -21,14 +21,14 @@ public class PowerActionsActivity extends Activity {
 
         configurationStore = new ConfigurationStore(this);
 
-        binding.btnShutdown.setOnClickListener(v -> client().powerAction(CommandProto.PowerCommand.PowerAction.SHUTDOWN));
-        binding.btnRestart.setOnClickListener(v -> client().powerAction(CommandProto.PowerCommand.PowerAction.RESTART));
-        binding.btnSleep.setOnClickListener(v -> client().powerAction(CommandProto.PowerCommand.PowerAction.SLEEP));
+        binding.btnShutdown.setOnClickListener(v -> client().powerAction(PowerProto.PowerCommandRequest.PowerAction.SHUTDOWN));
+        binding.btnRestart.setOnClickListener(v -> client().powerAction(PowerProto.PowerCommandRequest.PowerAction.RESTART));
+        binding.btnSleep.setOnClickListener(v -> client().powerAction(PowerProto.PowerCommandRequest.PowerAction.SLEEP));
     }
 
-    public CommandGrpcLiveDataClient client() {
+    public PowerGrpcLiveDataClient client() {
         // Create a new client that will close the channel on execution complete
-        return new CommandGrpcLiveDataClient(
+        return new PowerGrpcLiveDataClient(
                 configurationStore.getServerAddress(),
                 configurationStore.getServerPort()
         );
