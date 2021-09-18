@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import me.vinsce.android.wear.remote.databinding.ActivityRemoteMediaBinding;
-import me.vinsce.android.wear.remote.databinding.ActivityRemotePowerBinding;
-import me.vinsce.android.wear.remote.grpc.CommandGrpcLiveDataClient;
-import me.vinsce.remote.server.proto.CommandProto;
+import me.vinsce.android.wear.remote.grpc.MediaGrpcLiveDataClient;
 
 public class MediaControlActivity extends Activity {
     private static final String LOG_TAG = MediaControlActivity.class.getSimpleName();
@@ -32,9 +30,9 @@ public class MediaControlActivity extends Activity {
         binding.btnMediaStop.setOnClickListener(v -> client().mediaStop());
     }
 
-    public CommandGrpcLiveDataClient client() {
+    public MediaGrpcLiveDataClient client() {
         // Create a new client that will close the channel on execution complete
-        return new CommandGrpcLiveDataClient(
+        return new MediaGrpcLiveDataClient(
                 configurationStore.getServerAddress(),
                 configurationStore.getServerPort()
         );

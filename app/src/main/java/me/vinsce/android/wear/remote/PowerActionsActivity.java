@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import me.vinsce.android.wear.remote.databinding.ActivityRemotePowerBinding;
-import me.vinsce.android.wear.remote.grpc.CommandGrpcLiveDataClient;
-import me.vinsce.remote.server.proto.CommandProto;
+import me.vinsce.android.wear.remote.grpc.PowerGrpcLiveDataClient;
 import me.vinsce.remote.server.proto.PowerProto;
 
 public class PowerActionsActivity extends Activity {
@@ -27,9 +26,9 @@ public class PowerActionsActivity extends Activity {
         binding.btnSleep.setOnClickListener(v -> client().powerAction(PowerProto.PowerCommandRequest.PowerAction.SLEEP));
     }
 
-    public CommandGrpcLiveDataClient client() {
+    public PowerGrpcLiveDataClient client() {
         // Create a new client that will close the channel on execution complete
-        return new CommandGrpcLiveDataClient(
+        return new PowerGrpcLiveDataClient(
                 configurationStore.getServerAddress(),
                 configurationStore.getServerPort()
         );

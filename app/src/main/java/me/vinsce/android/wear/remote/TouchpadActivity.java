@@ -10,14 +10,13 @@ import androidx.core.view.GestureDetectorCompat;
 
 import io.grpc.ManagedChannelBuilder;
 import me.vinsce.android.wear.remote.databinding.ActivityTouchpadBinding;
-import me.vinsce.android.wear.remote.grpc.CommandGrpcLiveDataClient;
-import me.vinsce.remote.server.proto.CommandProto;
+import me.vinsce.android.wear.remote.grpc.MouseGrpcLiveDataClient;
 import me.vinsce.remote.server.proto.MouseProto;
 
 public class TouchpadActivity extends Activity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
-    private static final String LOG_TAG = SendMessageActivity.class.getSimpleName();
+    private static final String LOG_TAG = TouchpadActivity.class.getSimpleName();
 
-    private CommandGrpcLiveDataClient commandGrpcLiveDataClient;
+    private MouseGrpcLiveDataClient client;
     private GestureDetectorCompat gestureDetector;
     private float scaleFactor;
 
@@ -34,7 +33,7 @@ public class TouchpadActivity extends Activity implements GestureDetector.OnGest
 
         scaleFactor = configurationStore.getScaleFactor();
 
-        commandGrpcLiveDataClient = new CommandGrpcLiveDataClient(
+        client = new MouseGrpcLiveDataClient(
                 ManagedChannelBuilder.forAddress(
                         configurationStore.getServerAddress(),
                         configurationStore.getServerPort()
@@ -70,21 +69,21 @@ public class TouchpadActivity extends Activity implements GestureDetector.OnGest
             float deltaY = scaleFactor * (event.getY() - curY);
             curX = event.getX();
             curY = event.getY();
-            commandGrpcLiveDataClient.moveMouse(deltaX, deltaY);
+            client.moveMouse(deltaX, deltaY);
             return true;
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             Log.d(LOG_TAG, "ACTION_UP");
             if (ignoreUp)
                 ignoreUp = false;
             else
-                commandGrpcLiveDataClient.mouseEvent(MouseProto.MouseEventRequest.EventType.SINGLE_TAP_UP);
+                client.mouseEvent(MouseProto.MouseEventRequest.EventType.SINGLE_TAP_UP);
             return true;
         } else if (event.getActionMasked() == MotionEvent.ACTION_POINTER_UP) {
             int pointerIndex = (event.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK) >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
             Log.d(LOG_TAG, "ACTION_POINTER_UP[" + pointerIndex + "]");
             if (pointerIndex == 1) { // Two finger
                 // TODO[improve]
-                commandGrpcLiveDataClient.mouseEvent(MouseProto.MouseEventRequest.EventType.RIGHT_TAP);
+                client.mouseEvent(MouseProto.MouseEventRequest.EventType.RIGHT_TAP);
                 ignoreUp = true;
                 return true;
             }
@@ -96,7 +95,7 @@ public class TouchpadActivity extends Activity implements GestureDetector.OnGest
 
     @Override
     public boolean onSingleTapConfirmed(MotionEvent motionEvent) {
-        commandGrpcLiveDataClient.mouseEvent(MouseProto.MouseEventRequest.EventType.SINGLE_TAP);
+        client.mouseEvent(MouseProto.MouseEventRequest.EventType.SINGLE_TAP);
         return true;
     }
 
@@ -107,7 +106,7 @@ public class TouchpadActivity extends Activity implements GestureDetector.OnGest
 
     @Override
     public boolean onDoubleTapEvent(MotionEvent motionEvent) {
-        commandGrpcLiveDataClient.mouseEvent(MouseProto.MouseEventRequest.EventType.DOUBLE_TAP);
+        client.mouseEvent(MouseProto.MouseEventRequest.EventType.DOUBLE_TAP);
         return true;
     }
 
@@ -121,7 +120,7 @@ public class TouchpadActivity extends Activity implements GestureDetector.OnGest
 
     @Override
     public boolean onSingleTapUp(MotionEvent motionEvent) {
-        commandGrpcLiveDataClient.mouseEvent(MouseProto.MouseEventRequest.EventType.SINGLE_TAP_UP);
+        client.mouseEvent(MouseProto.MouseEventRequest.EventType.SINGLE_TAP_UP);
         return true;
     }
 
@@ -132,7 +131,7 @@ public class TouchpadActivity extends Activity implements GestureDetector.OnGest
 
     @Override
     public void onLongPress(MotionEvent motionEvent) {
-        commandGrpcLiveDataClient.mouseEvent(MouseProto.MouseEventRequest.EventType.LONG_PRESS);
+        client.mouseEvent(MouseProto.MouseEventRequest.EventType.LONG_PRESS);
     }
 
     @Override
@@ -142,7 +141,7 @@ public class TouchpadActivity extends Activity implements GestureDetector.OnGest
 
     @Override
     protected void onDestroy() {
-        commandGrpcLiveDataClient.closeChannel();
+        client.closeChannel();
         super.onDestroy();
     }
 }
